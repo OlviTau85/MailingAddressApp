@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MailAddressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MailAddresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HouseNumber" Type="int" Nullable="false" />
+    <Property Name="Index" Type="nchar" MaxLength="6" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MailAddressModelStoreContainer">
+    <EntitySet Name="MailAddresses" EntityType="Self.MailAddresses" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

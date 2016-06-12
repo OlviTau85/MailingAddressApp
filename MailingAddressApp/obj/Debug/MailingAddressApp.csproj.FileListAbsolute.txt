@@ -27,6 +27,6 @@ C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\bin\System.Web.Razo
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.xml
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Razor.xml
-C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.csprojResolveAssemblyReference.cache
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.dll
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.pdb
+C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.csprojResolveAssemblyReference.cache

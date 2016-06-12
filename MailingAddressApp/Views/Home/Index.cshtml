@@ -3,7 +3,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <h2>Index</h2>
-    {{'Angular ' + 'installed!'}}
+<div ng-controller="MailAddressListCtrl" class="container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Таблица почтовых адресов</div>
+        <div class="panel-body">
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Страна</th>
+                    <th>Город</th>
+                    <th>Улица</th>
+                    <th>Дом №</th>
+                    <th>Индекс</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="address in MailAddressList">
+                    <th scope="row">{{$index}}</th>
+                    <td>{{address.Country}}</td>
+                    <td>{{address.City}}</td>
+                    <td>{{address.Street}}</td>
+                    <td>{{address.HouseNumber}}</td>
+                    <td>{{address.Index}}</td>
+                    <td>{{address.CreationDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+@section scripts {
+<script src="~/Scripts/AngularCtrl/MailAddressListCtrl.js"></script>
+}

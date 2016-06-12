@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="MailingAddressApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -9,10 +9,10 @@
     @Styles.Render("~/Content/bootstrap-theme")
 
 </head>
-<body ng-app>
+<body>
     @RenderBody()
-
     @Scripts.Render("~/bundles/angular")
+    <script src="~/Scripts/AngularCtrl/Init.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
