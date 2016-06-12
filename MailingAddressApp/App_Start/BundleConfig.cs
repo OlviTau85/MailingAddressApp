@@ -9,7 +9,7 @@ namespace MailingAddressApp
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scrits/angular.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js"));
         }
     }
 }
