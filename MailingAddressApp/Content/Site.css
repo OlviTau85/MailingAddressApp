@@ -9,6 +9,11 @@ header, footer, nav, section {
     display: block;
 }
 
+.thead-inverse {
+    background-color: #808080;
+    color: #fff;
+}
+
 
 /* Styles for basic forms
 -----------------------------------------------------------*/

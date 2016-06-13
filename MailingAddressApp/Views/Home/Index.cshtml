@@ -1,43 +1,40 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "MailingAddressApp";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div ng-controller="MailAddressListCtrl" class="container">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Таблица почтовых адресов</div>
-        <div class="panel-body">
+    <div ng-controller="MailAddressesListCtrl" class="container">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Таблица почтовых адресов</div>
+            <div class="panel-body"></div>
+            <!-- Table -->
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>№</th>
+                        <th>Страна</th>
+                        <th>Город</th>
+                        <th>Улица</th>
+                        <th>Дом №</th>
+                        <th>Индекс</th>
+                        <th>Дата</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="address in mailAddressesList | orderBy: 'City': true ">
+                        <th scope="row">{{$index}}</th>
+                        <td>{{address.Country}}</td>
+                        <td>{{address.City}}</td>
+                        <td>{{address.Street}}</td>
+                        <td>{{address.HouseNumber}}</td>
+                        <td>{{address.Index}}</td>
+                        <td>{{address.CreationDate.slice(6, -2) | date:'dd.MM.yyyy HH:mm'}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <!-- Table -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Страна</th>
-                    <th>Город</th>
-                    <th>Улица</th>
-                    <th>Дом №</th>
-                    <th>Индекс</th>
-                    <th>Дата</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="address in MailAddressList">
-                    <th scope="row">{{$index}}</th>
-                    <td>{{address.Country}}</td>
-                    <td>{{address.City}}</td>
-                    <td>{{address.Street}}</td>
-                    <td>{{address.HouseNumber}}</td>
-                    <td>{{address.Index}}</td>
-                    <td>{{address.CreationDate}}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-</div>
-
 @section scripts {
-<script src="~/Scripts/AngularCtrl/MailAddressListCtrl.js"></script>
+    <script src="~/Scripts/MailAddressesListModel.js"></script>
+    <script src="~/Scripts/MailAddressesListCtrl.js"></script>
 }
