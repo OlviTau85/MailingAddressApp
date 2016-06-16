@@ -14,6 +14,14 @@ header, footer, nav, section {
     color: #fff;
 }
 
+.thead-inverse a {
+    color: #fff;
+}
+
+.filter-input {
+    color: #232323;
+}
+
 
 /* Styles for basic forms
 -----------------------------------------------------------*/
