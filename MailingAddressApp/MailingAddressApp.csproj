@@ -158,6 +158,8 @@
     <Content Include="App_Data\MailAddress_log.ldf">
       <DependentUpon>MailAddress.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-additions.css" />
+    <Content Include="Content\bootstrap-additions.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -165,6 +167,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\angular-ranger.css" />
+    <Content Include="Scripts\Angular\angular-ranger.js" />
+    <Content Include="Content\angular-ranger.min.css" />
+    <Content Include="Scripts\Angular\angular-ranger.min.js" />
+    <Content Include="Scripts\Angular\angular-locale_ru-ru.js" />
+    <Content Include="Scripts\Angular\AngularStrap\angular-strap.js" />
+    <Content Include="Scripts\Angular\AngularStrap\angular-strap.min.js" />
+    <Content Include="Scripts\Angular\AngularStrap\angular-strap.tpl.js" />
+    <Content Include="Scripts\Angular\AngularStrap\angular-strap.tpl.min.js" />
     <Content Include="Scripts\Angular\angular-mocks.js" />
     <Content Include="Scripts\Angular\angular.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
@@ -193,9 +204,12 @@
       <DependentUpon>MailingAddressAppModel.edmx</DependentUpon>
       <LastGenOutput>MailingAddressAppModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Angular\AngularStrap\date-parser.js" />
     <Content Include="Scripts\MailAddressesListModel.js" />
     <Content Include="Scripts\MailAddressesListCtrl.js" />
     <Content Include="Scripts\App.js" />
+    <Content Include="Templates\Popover_DateRangePicker.tpl.html" />
+    <Content Include="Templates\Popover_HouseNumber.tpl.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -219,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\Angular\angular.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Angular\AngularStrap\angular-strap.min.js.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

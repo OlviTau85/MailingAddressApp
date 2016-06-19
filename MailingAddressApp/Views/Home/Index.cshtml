@@ -27,12 +27,16 @@
                     </tr>
                     <tr class ="filter-input">
                         <th></th>
-                        <th><input style="width: 140px" placeholder="Страна" type="text" ng-model="filter1" /></th>
-                        <th><input style="width: 140px" placeholder="Город" type="text" ng-model="filter2" /></th>
-                        <th><input style="width: 140px" placeholder="Улица" type="text" ng-model="filter3" /></th>
-                        <th><input style="width: 140px" placeholder="Дом №" type="text" ng-model="filter4" /></th>
-                        <th><input style="width: 140px" placeholder="Индекс" type="text" ng-model="filter5" /></th>
-                        <th><input style="width: 140px" placeholder="Дата" type="text" ng-model="filter6" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="filter1" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="filter2" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="filter3" /></th>
+                        <th><input type="text" style="width: 80px" class="form-control" placeholder="Дом №" ng-model="filter4"
+                             bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")" data-auto-close="1"
+                             data-placement="bottom" title="Введите диапозон номеров" /></th>
+                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="filter5" /></th>
+                        <th><input type="text" style="width: 140px" class="form-control" placeholder="Дата" ng-model="filter6"
+                             bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
+                             data-placement="bottom" title="Укажите период" /></th>
                     </tr>
                 </thead>
                 
