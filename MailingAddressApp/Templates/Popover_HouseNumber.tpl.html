@@ -1,5 +1,5 @@
 ﻿
-<div class="popover" tabindex="-1">
+<div class="popover" tabindex="-1" >
     <div class="arrow"></div>
     <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
     <div class="popover-content">
@@ -7,12 +7,12 @@
             <input type="text" class="form-control" ng-model="houseNumberFilter.valueFrom" />
             <input type="text" class="form-control" ng-model="houseNumberFilter.valueUntil" />
             <br />
-            <angular-ranger min="1" max="200" step="1" min-value="houseNumberFilter.valueFrom" max-value="houseNumberFilter.valueUntil"></angular-ranger>
+            <angular-ranger min="{{houseNumberFilter.min}}" max="{{houseNumberFilter.max}}" step="1" min-value="houseNumberFilter.valueFrom" max-value="houseNumberFilter.valueUntil"></angular-ranger>
             <br />
-            <div class="form-actions">
+            <!--<div class="form-actions">
                 <button type="button" class="form-control btn btn-danger" ng-click="$hide()">Close</button>
-                <button type="button" class="form-control btn btn-primary" ng-click="filterHouseNumber();$hide()">Save changes</button>
-            </div>
+                <button type="button" class="form-control btn btn-primary" ng-click="$hide()">Save changes</button>
+            </div>-->
         </form>
-</div>
+    </div>
 </div>

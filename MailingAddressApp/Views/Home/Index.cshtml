@@ -12,36 +12,50 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th>№</th>
-                        <th><a href="" ng-click="sort('Country')">Страна<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Country')}"></i></a></th>
-                        <th><a href="" ng-click="sort('City')">Город<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('City')}"></i></a></th>
-                        <th><a href="" ng-click="sort('Street')">Улица<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Street')}"></i></a></th>
-                        <th><a href="" ng-click="sort('HouseNumber')">Дом №<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i></a></th>
-                        <th><a href="" ng-click="sort('Index')">Индекс<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Index')}"></i></a></th>
-                        <th><a href="" ng-click="sort('CreationDate')">Дата<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i></a></th>
+                        <th><a href="" ng-click="sort('Country')">
+    Страна<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('Country')}"></i>
+</a></th>
+                        <th><a href="" ng-click="sort('City')">
+    Город<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('City')}"></i>
+</a></th>
+                        <th><a href="" ng-click="sort('Street')">
+    Улица<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('Street')}"></i>
+</a></th>
+                        <th><a href="" ng-click="sort('HouseNumber')">
+    Дом №<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
+</a></th>
+                        <th><a href="" ng-click="sort('Index')">
+    Индекс<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('Index')}"></i>
+</a></th>
+                        <th><a href="" ng-click="sort('CreationDate')">
+    Дата<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),
+                                                                                                         'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
+</a></th>
                     </tr>
                     <tr class ="filter-input">
                         <th></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="filter1" /></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="filter2" /></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="filter3" /></th>
-                        <th><input type="text" style="width: 80px" class="form-control" placeholder="Дом №" ng-model="filter4"
-                             bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")" data-auto-close="1"
-                             data-placement="bottom" title="Введите диапозон номеров" /></th>
-                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="filter5" /></th>
-                        <th><input type="text" style="width: 140px" class="form-control" placeholder="Дата" ng-model="filter6"
-                             bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
-                             data-placement="bottom" title="Укажите период" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="countryFilter" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="cityFilter" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="streetFilter" /></th>
+                        <th><input type="text" readonly style="width: 80px" class="form-control" placeholder="Дом №" ng-model="houseNumberFilter | HouseNumberFilter"
+       bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")" data-auto-close="1"
+       data-placement="bottom" title="Введите диапозон номеров" /></th>
+                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="indexFilter" /></th>
+                        <th><input type="text" style="width: 180px" class="form-control" placeholder="Дата" ng-model="dateFilter|DateRangeFilter"
+       bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
+       data-placement="bottom" title="Укажите период" /></th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr ng-repeat="address in filter = (mailAddressesList | orderBy: sortField: reverse | limitTo:10 | filter:{Country:filter1, City:filter2, Street:filter3})">
+                    <tr ng-repeat="address in filter = (mailAddressesList | orderBy: sortField: reverse | limitTo:10 |
+                        MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate |
+                        filter:{Country:countryFilter, City:cityFilter, Street:streetFilter, Index:indexFilter})">
                         <th scope="row" ng-bind="$index + 1"></th>
                         <td ng-bind="address.Country"></td>
                         <td ng-bind="address.City"></td>
