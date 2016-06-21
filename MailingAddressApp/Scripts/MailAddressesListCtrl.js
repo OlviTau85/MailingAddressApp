@@ -13,6 +13,12 @@ function mailAddressListFilter() {
 
 function dateRangeFilter(dateFilter) {
     return function (input) {
+        if (!input.dateFrom) {
+            input.dateFrom = input.minDate;
+        }
+        if (!input.dateUntil) {
+            input.dateUntil = new Date();
+        }
         return dateFilter(input.dateFrom, 'dd.MM.yyyy') + "-" + dateFilter(input.dateUntil, 'dd.MM.yyyy');
     }
 }
@@ -41,7 +47,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
             });
             $scope.rangeData.min = $scope.rangeData.valueFrom = min;
             $scope.rangeData.max = $scope.rangeData.valueUntil = max;
-            $scope.creationDateFilterData.dateFrom = minDate.slice(6, -2);
+            $scope.creationDateFilterData.dateFrom = $scope.creationDateFilterData.minDate = minDate.slice(6, -2);
             $scope.creationDateFilterData.dateUntil = new Date();
             $scope.mailAddressesList = orderBy($scope.mailAddressesList, $scope.sortField, $scope.reverse);
             $scope.filteredData = $scope.mailAddressesList;
@@ -56,13 +62,32 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
         $scope.filteredData = mailAddressListFilter($scope.filteredData, $scope.rangeData.valueFrom, $scope.rangeData.valueUntil,
                                                     $scope.creationDateFilterData.dateFrom, $scope.creationDateFilterData.dateUntil);
         $scope.filteredData = filter($scope.filteredData, { Country: $scope.countryFilter, City: $scope.cityFilter, Street: $scope.streetFilter, Index: $scope.indexFilter });
+        $scope.filteredData = orderBy($scope.filteredData, $scope.sortField, $scope.reverse);
         $scope.paginationData.totalItems = $scope.filteredData.length;
         $scope.paginationData.onPageChange();
+    };
+
+    $scope.resetFilter = function () {
+        $scope.countryFilter = undefined;
+        $scope.cityFilter = undefined;
+        $scope.streetFilter = undefined;
+        $scope.indexFilter = undefined;
+        $scope.rangeData.valueFrom = $scope.rangeData.min;
+        $scope.rangeData.valueUntil = $scope.rangeData.max;
+        $scope.rangeData.onRangeChange();
+        $scope.creationDateFilterData.dateFrom = $scope.creationDateFilterData.minDate;
+        $scope.creationDateFilterData.dateUntil = new Date();
+        $scope.filteredData = $scope.mailAddressesList;
+        $scope.filteredData = orderBy($scope.filteredData, $scope.sortField, $scope.reverse);
+        $scope.paginationData.totalItems = $scope.filteredData.length;
+        $scope.paginationData.onPageChange();
+
     };
 
     $scope.creationDateFilterData = {
         dateFrom: undefined,
         dateUntil: undefined,
+        minDate: undefined,
         onDateChange: function () {
             $scope.onFilterChange();
         }

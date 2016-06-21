@@ -9,27 +9,27 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th>№</th>
-                        <th><a href="" ng-click="sort('Country')">Страна
+                        <th><a href="" class="btn" ng-click="sort('Country')">Страна
                                 <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'), 'glyphicon-chevron-down' : isSortDown('Country')}"></i>
                             </a></th>
-                        <th><a href="" ng-click="sort('City')">Город
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'), 'glyphicon-chevron-down' : isSortDown('City')}"></i>
-                            </a></th>
-                        <th><a href="" ng-click="sort('Street')">Улица
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'), 'glyphicon-chevron-down' : isSortDown('Street')}"></i>
-                            </a></th>
-                        <th><a href="" ng-click="sort('HouseNumber')">Дом №
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'), 'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
-                            </a></th>
-                        <th><a href="" ng-click="sort('Index')">Индекс
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'), 'glyphicon-chevron-down' : isSortDown('Index')}"></i>
-                            </a></th>
-                        <th><a href="" ng-click="sort('CreationDate')">Дата
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
-                        </a></th>
+                        <th><a href="" class="btn" ng-click="sort('City')">Город
+    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'), 'glyphicon-chevron-down' : isSortDown('City')}"></i>
+</a></th>
+                        <th><a href="" class="btn" ng-click="sort('Street')">Улица
+    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'), 'glyphicon-chevron-down' : isSortDown('Street')}"></i>
+</a></th>
+                        <th><a href="" class="btn" ng-click="sort('HouseNumber')">Дом №
+    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'), 'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
+</a></th>
+                        <th><a href="" class="btn" ng-click="sort('Index')">Индекс
+    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'), 'glyphicon-chevron-down' : isSortDown('Index')}"></i>
+</a></th>
+                        <th><a href="" class="btn" ng-click="sort('CreationDate')">Дата
+    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
+</a></th>
                     </tr>
                     <tr class ="filter-input">
-                        <th></th>
+                        <th><a href="" ng-click="resetFilter()" class="btn"><i class="glyphicon glyphicon-refresh"></i></a></th>
                         <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="countryFilter" ng-change="onFilterChange()"/></th>
                         <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="cityFilter" ng-change="onFilterChange()" /></th>
                         <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="streetFilter" ng-change="onFilterChange()" /></th>
@@ -47,12 +47,12 @@
                     <!--<tr ng-repeat="address in filter = (pageData | MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate | filter:{Country :countryFilter, City :cityFilter, Street :streetFilter, Index :indexFilter} | orderBy: sortField: reverse) | limitTo:paginationData.itemsPerPage">-->
                     <tr ng-repeat="address in pageData">
                         <th scope="row" ng-bind="(paginationData.currentPage - 1) * paginationData.itemsPerPage + $index + 1"></th>
-                        <td ng-bind="address.Country"></td>
-                        <td ng-bind="address.City"></td>
-                        <td ng-bind="address.Street"></td>
-                        <td ng-bind="address.HouseNumber"></td>
-                        <td ng-bind="address.Index"></td>
-                        <td ng-bind="address.CreationDate.slice(6, -2) | date:'dd.MM.yyyy HH:mm'"></td>
+                        <td ng-bind="address.Country" ng-class="{'text-info':isSortUp('Country')||isSortDown('Country')||countryFilter}"></td>
+                        <td ng-bind="address.City" ng-class="{'text-info':isSortUp('City')||isSortDown('City')||cityFilter}"></td>
+                        <td ng-bind="address.Street" ng-class="{'text-info':isSortUp('Street')||isSortDown('Street')||streetFilter}"></td>
+                        <td ng-bind="address.HouseNumber" ng-class="{'text-info':isSortUp('HouseNumber')||isSortDown('HouseNumber')||houseNumberFilterData.houseNumberFilter}"></td>
+                        <td ng-bind="address.Index" ng-class="{'text-info':isSortUp('Index')||isSortDown('Index')||indexFilter}"></td>
+                        <td ng-bind="address.CreationDate.slice(6, -2) | date:'dd.MM.yyyy HH:mm'" ng-class="{'text-info':isSortUp('CreationDate')||isSortDown('CreationDate')||creationDateFilterData}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -61,7 +61,7 @@
                     <div class="col-lg-offset-4 col-lg-6 center">
                         <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
                     </div>
-                    <label class="control-label col-lg-2 label-info">Всего: <span ng-bind="filteredData.length"></span></label>
+                    <label class="control-label col-lg-2 label-info">Отобрано: <span ng-bind="filteredData.length"></span> из <span ng-bind="mailAddressesList.length"></span> </label>
                     
                 </div>
             </div>

@@ -23,6 +23,10 @@ namespace MailingAddressApp.Controllers
                 }
                 return new JsonResult { Data = adsList, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
+            catch (System.Data.EntityException) 
+            {
+                return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+            }
             catch (ArgumentNullException)
             {
                 return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.DenyGet };
