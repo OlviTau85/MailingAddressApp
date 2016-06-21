@@ -6,7 +6,6 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">Таблица почтовых адресов</div>
-            <div class="panel-body">Всего: <span ng-bind="filter.length"></span></div>
             <!-- Table -->
             <table class="table table-striped">
                 <thead class="thead-inverse">
@@ -53,9 +52,8 @@
                 </thead>
                 
                 <tbody>
-                    <tr ng-repeat="address in filter = (mailAddressesList | orderBy: sortField: reverse | limitTo:10 |
-                        MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate |
-                        filter:{Country:countryFilter, City:cityFilter, Street:streetFilter, Index:indexFilter})">
+                    <tr ng-repeat="address in filter = (pageData | MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate |
+                        filter:{Country :countryFilter, City :cityFilter, Street :streetFilter, Index :indexFilter} | orderBy: sortField: reverse) | limitTo:paginationData.itemsPerPage">
                         <th scope="row" ng-bind="$index + 1"></th>
                         <td ng-bind="address.Country"></td>
                         <td ng-bind="address.City"></td>
@@ -66,6 +64,10 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="panel-body">
+                <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                Всего: <span ng-bind="filter.length"></span>
+            </div>
         </div>
     </div>
 @section scripts {

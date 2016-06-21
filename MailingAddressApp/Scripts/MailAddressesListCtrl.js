@@ -2,7 +2,7 @@
 .factory('MailAddressesListModel', MailAddressesListModel)
 .filter('MailAdsFilter', MailAdsFilter)
 .filter('HouseNumberFilter', HouseNumberFilter)
-.filter('DateRangeFilter', DateRangeFilter);
+.filter('DateRangeFilter', ['dateFilter', DateRangeFilter]);
 
 function MailAdsFilter() {
     return function (input, from, until, dateFrom, dateUntil) {
@@ -42,14 +42,16 @@ function HouseNumberFilter() {
 
 function MailAddressesListCtrl($scope, MailAddressesListModel) {
     $scope.mailAddressesList = null;
+    $scope.pageData = [];
+    $scope.filter = null;
     MailAddressesListModel.GetMailAddressesList().then(function (data) {
         $scope.mailAddressesList = data.data;
-        if ($scope.mailAddressesList.length > 0) {
+        $scope.paginationData.totalItems = $scope.mailAddressesList.length;
+        if ($scope.paginationData.totalItems > 0) {
             var max = $scope.mailAddressesList[0].HouseNumber;
             var min = $scope.mailAddressesList[0].HouseNumber;
             var minDate = $scope.mailAddressesList[0].CreationDate;
             $scope.mailAddressesList.forEach(function (item) {
-                //console.log(item.CreationDate.slice(6,-2) + " " + minDate);
                 if (item.HouseNumber > max) {
                     max = item.HouseNumber;
                 }
@@ -62,10 +64,9 @@ function MailAddressesListCtrl($scope, MailAddressesListModel) {
             });
             $scope.houseNumberFilter.min = min;
             $scope.houseNumberFilter.max = max;
-            //console.log(minDate.slice(6, -2) + " " + new Date());
             $scope.dateFilter.fromDate = minDate.slice(6, -2);
             $scope.dateFilter.untilDate = new Date();
-            //console.log($scope.dateFilter.fromDate);
+            $scope.pageData = $scope.mailAddressesList.slice(0, $scope.paginationData.totalItems);
         }
     }, function (error) {
         alert("Error! Can't get mail address list!");
@@ -83,10 +84,16 @@ function MailAddressesListCtrl($scope, MailAddressesListModel) {
         max: 999
     };
 
-    $scope.onHouseNumberHide = function () {
-        alert("Hide");
+    $scope.paginationData = {
+        maxSize: 5,
+        itemsPerPage: 10,
+        totalItems: 0,
+        currentPage: 1,
+        onPageChange: function () {
+            $scope.pageData = $scope.mailAddressesList.slice(this.currentPage * this.itemsPerPage, (this.currentPage + 1) * this.itemsPerPage);
+        }
     };
-    
+
     $scope.sortField = undefined;
     $scope.reverse = false;
 
