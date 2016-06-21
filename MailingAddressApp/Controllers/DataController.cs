@@ -14,12 +14,20 @@ namespace MailingAddressApp.Controllers
 
         public JsonResult GetMailAddressList()
         {
-            List<MailAddress> adsList = new List<MailAddress>();
-            using (MailAddressEntities dc = new MailAddressEntities())
+            try
             {
-                adsList = dc.MailAddresses.OrderBy(ord => ord.CreationDate).ToList();
+                List<MailAddress> adsList = new List<MailAddress>();
+                using (MailAddressEntities dc = new MailAddressEntities())
+                {
+                    adsList = dc.MailAddresses.OrderBy(ord => ord.CreationDate).ToList();
+                }
+                return new JsonResult { Data = adsList, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = adsList, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            catch (ArgumentNullException)
+            {
+                return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+            }
+            
         }
 
     }

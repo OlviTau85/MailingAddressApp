@@ -4,57 +4,49 @@
 }
     <div ng-controller="MailAddressesListCtrl" class="container">
         <div class="panel panel-default">
-            <!-- Default panel contents -->
             <div class="panel-heading">Таблица почтовых адресов</div>
-            <!-- Table -->
             <table class="table table-striped">
                 <thead class="thead-inverse">
                     <tr>
                         <th>№</th>
-                        <th><a href="" ng-click="sort('Country')">
-    Страна<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Country')}"></i>
-</a></th>
-                        <th><a href="" ng-click="sort('City')">
-    Город<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('City')}"></i>
-</a></th>
-                        <th><a href="" ng-click="sort('Street')">
-    Улица<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Street')}"></i>
-</a></th>
-                        <th><a href="" ng-click="sort('HouseNumber')">
-    Дом №<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
-</a></th>
-                        <th><a href="" ng-click="sort('Index')">
-    Индекс<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('Index')}"></i>
-</a></th>
-                        <th><a href="" ng-click="sort('CreationDate')">
-    Дата<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),
-                                                                                                         'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
-</a></th>
+                        <th><a href="" ng-click="sort('Country')">Страна
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'), 'glyphicon-chevron-down' : isSortDown('Country')}"></i>
+                            </a></th>
+                        <th><a href="" ng-click="sort('City')">Город
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'), 'glyphicon-chevron-down' : isSortDown('City')}"></i>
+                            </a></th>
+                        <th><a href="" ng-click="sort('Street')">Улица
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'), 'glyphicon-chevron-down' : isSortDown('Street')}"></i>
+                            </a></th>
+                        <th><a href="" ng-click="sort('HouseNumber')">Дом №
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'), 'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
+                            </a></th>
+                        <th><a href="" ng-click="sort('Index')">Индекс
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'), 'glyphicon-chevron-down' : isSortDown('Index')}"></i>
+                            </a></th>
+                        <th><a href="" ng-click="sort('CreationDate')">Дата
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
+                        </a></th>
                     </tr>
                     <tr class ="filter-input">
                         <th></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="countryFilter" /></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="cityFilter" /></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="streetFilter" /></th>
-                        <th><input type="text" readonly style="width: 80px" class="form-control" placeholder="Дом №" ng-model="houseNumberFilter | HouseNumberFilter"
-       bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")" data-auto-close="1"
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="countryFilter" ng-change="onFilterChange()"/></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="cityFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="streetFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 80px" class="form-control" placeholder="Дом №" ng-model="houseNumberFilterData.houseNumberFilter" ng-change="houseNumberFilterData.onHouseNumberFilterChange()"
+       bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")"
        data-placement="bottom" title="Введите диапозон номеров" /></th>
-                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="indexFilter" /></th>
-                        <th><input type="text" style="width: 180px" class="form-control" placeholder="Дата" ng-model="dateFilter|DateRangeFilter"
+                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="indexFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 180px" class="form-control" placeholder="Дата" ng-model="creationDateFilterData|dateRangeFilter"
        bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
        data-placement="bottom" title="Укажите период" /></th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr ng-repeat="address in filter = (pageData | MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate |
-                        filter:{Country :countryFilter, City :cityFilter, Street :streetFilter, Index :indexFilter} | orderBy: sortField: reverse) | limitTo:paginationData.itemsPerPage">
-                        <th scope="row" ng-bind="$index + 1"></th>
+                    <!--<tr ng-repeat="address in filter = (pageData | MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate | filter:{Country :countryFilter, City :cityFilter, Street :streetFilter, Index :indexFilter} | orderBy: sortField: reverse) | limitTo:paginationData.itemsPerPage">-->
+                    <tr ng-repeat="address in pageData">
+                        <th scope="row" ng-bind="(paginationData.currentPage - 1) * paginationData.itemsPerPage + $index + 1"></th>
                         <td ng-bind="address.Country"></td>
                         <td ng-bind="address.City"></td>
                         <td ng-bind="address.Street"></td>
@@ -65,8 +57,13 @@
                 </tbody>
             </table>
             <div class="panel-body">
-                <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
-                Всего: <span ng-bind="filter.length"></span>
+                <div class="row">
+                    <div class="col-lg-offset-4 col-lg-6 center">
+                        <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                    </div>
+                    <label class="control-label col-lg-2 label-info">Всего: <span ng-bind="filteredData.length"></span></label>
+                    
+                </div>
             </div>
         </div>
     </div>

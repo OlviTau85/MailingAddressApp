@@ -1,6 +1,6 @@
 ﻿function MailAddressesListModel($http) {
     var list = {};
-    list.GetMailAddressesList = function () {
+    list.getMailAddressesList = function () {
         return $http.get('/Data/GetMailAddressList');
     }
     return list;
