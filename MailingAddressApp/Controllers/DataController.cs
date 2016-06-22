@@ -9,17 +9,18 @@ namespace MailingAddressApp.Controllers
 {
     public class DataController : Controller
     {
+        const int itemsPerPage = 3000;
         //
         // GET: /Data/
 
-        public JsonResult GetMailAddressList()
+        public JsonResult GetMailAddressList(int id)
         {
             try
             {
                 List<MailAddress> adsList = new List<MailAddress>();
                 using (MailAddressEntities dc = new MailAddressEntities())
                 {
-                    adsList = dc.MailAddresses.OrderBy(ord => ord.CreationDate).ToList();
+                    adsList = dc.MailAddresses.OrderBy(ord => ord.Id).Skip((int)(id - 1) * itemsPerPage).Take(itemsPerPage).ToList();
                 }
                 return new JsonResult { Data = adsList, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }

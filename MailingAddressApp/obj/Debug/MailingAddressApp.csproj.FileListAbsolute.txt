@@ -30,3 +30,35 @@ C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\bin\System.Web.WebP
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.dll
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.pdb
 C:\Users\Olvitau\Desktop\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.csprojResolveAssemblyReference.cache
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\MailingAddressApp.dll.config
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\MailingAddressApp.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\MailingAddressApp.pdb
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\Antlr3.Runtime.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\EntityFramework.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\Newtonsoft.Json.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Net.Http.Formatting.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Http.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Http.WebHost.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Mvc.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Optimization.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Providers.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Razor.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\WebGrease.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\EntityFramework.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\Newtonsoft.Json.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Net.Http.Formatting.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Http.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Http.WebHost.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Mvc.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.Razor.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.csprojResolveAssemblyReference.cache
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.dll
+C:\Users\188 цех\Desktop\Новая папка\MailingAddressApp\MailingAddressApp\obj\Debug\MailingAddressApp.pdb

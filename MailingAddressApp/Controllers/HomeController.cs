@@ -15,7 +15,7 @@ namespace MailingAddressApp.Controllers
 
         public ActionResult Index()
         {
-           /* Random r = new Random();
+            /*Random r = new Random();
             long ticks = DateTime.Now.Ticks;
             string[] countries = new[] {"Streets", "Россия", "Украина", "Белоруссия"};
 
@@ -34,7 +34,7 @@ namespace MailingAddressApp.Controllers
             using (MailAddressEntities dc = new MailAddressEntities())
             {
 
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < 20000; i++)
                 {
                     int idx = r.Next(countries.Length - 1) + 1;
                     string country = countries[idx];

@@ -44,7 +44,6 @@
                 </thead>
                 
                 <tbody>
-                    <!--<tr ng-repeat="address in filter = (pageData | MailAdsFilter :houseNumberFilter.valueFrom :houseNumberFilter.valueUntil :dateFilter.fromDate :dateFilter.untilDate | filter:{Country :countryFilter, City :cityFilter, Street :streetFilter, Index :indexFilter} | orderBy: sortField: reverse) | limitTo:paginationData.itemsPerPage">-->
                     <tr ng-repeat="address in pageData">
                         <th scope="row" ng-bind="(paginationData.currentPage - 1) * paginationData.itemsPerPage + $index + 1"></th>
                         <td ng-bind="address.Country" ng-class="{'text-info':isSortUp('Country')||isSortDown('Country')||countryFilter}"></td>
