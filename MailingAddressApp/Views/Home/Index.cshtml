@@ -4,45 +4,54 @@
 }
     <div ng-controller="MailAddressesListCtrl" class="container">
         <div class="panel panel-default">
-            <div class="panel-heading">Таблица почтовых адресов</div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="btn-group col-lg-offset-10">
+                        <label class="btn btn-sm btn-primary" ng-model="radioModel" ng-click="translate();" uib-btn-radio="'ru'">Русc / Ru</label>
+                        <label class="btn btn-sm btn-primary" ng-model="radioModel" ng-click="translate();" uib-btn-radio="'en'">Англ / En</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <h3><b ng-bind="translation.TITLE"></b></h3>
+                    </div>
+                </div>
+            </div>
             <table class="table table-striped">
                 <thead class="thead-inverse">
                     <tr>
                         <th>№</th>
-                        <th><a href="" class="btn" ng-click="sort('Country')">Страна
+                        <th><a href="" class="btn" ng-click="sort('Country')"><span ng-bind="translation.CAPTION_COUNTRY"></span>
                                 <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Country'), 'glyphicon-chevron-down' : isSortDown('Country')}"></i>
                             </a></th>
-                        <th><a href="" class="btn" ng-click="sort('City')">Город
-    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'), 'glyphicon-chevron-down' : isSortDown('City')}"></i>
-</a></th>
-                        <th><a href="" class="btn" ng-click="sort('Street')">Улица
-    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'), 'glyphicon-chevron-down' : isSortDown('Street')}"></i>
-</a></th>
-                        <th><a href="" class="btn" ng-click="sort('HouseNumber')">Дом №
-    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'), 'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
-</a></th>
-                        <th><a href="" class="btn" ng-click="sort('Index')">Индекс
-    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'), 'glyphicon-chevron-down' : isSortDown('Index')}"></i>
-</a></th>
-                        <th><a href="" class="btn" ng-click="sort('CreationDate')">Дата
-    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
-</a></th>
+                        <th><a href="" class="btn" ng-click="sort('City')"><span ng-bind="translation.CAPTION_CITY"></span>
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('City'), 'glyphicon-chevron-down' : isSortDown('City')}"></i>
+                            </a></th>
+                        <th><a href="" class="btn" ng-click="sort('Street')"><span ng-bind="translation.CAPTION_STREET"></span>
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Street'), 'glyphicon-chevron-down' : isSortDown('Street')}"></i>
+                            </a></th>
+                        <th><a href="" class="btn" ng-click="sort('HouseNumber')"><span ng-bind="translation.CAPTION_HN"></span>
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('HouseNumber'), 'glyphicon-chevron-down' : isSortDown('HouseNumber')}"></i>
+                            </a></th>
+                        <th><a href="" class="btn" ng-click="sort('Index')"><span ng-bind="translation.CAPTION_INDEX"></span>
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('Index'), 'glyphicon-chevron-down' : isSortDown('Index')}"></i>
+                            </a></th>
+                        <th><a href="" class="btn" ng-click="sort('CreationDate')"><span ng-bind="translation.CAPTION_DATE"></span>
+                                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('CreationDate'),'glyphicon-chevron-down' : isSortDown('CreationDate')}"></i>
+                        </a></th>
                     </tr>
                     <tr class ="filter-input">
                         <th><a href="" ng-click="resetFilter()" class="btn"><i class="glyphicon glyphicon-refresh"></i></a></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Страна" ng-model="countryFilter" ng-change="onFilterChange()"/></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Город" ng-model="cityFilter" ng-change="onFilterChange()" /></th>
-                        <th><input type="text" style="width: 130px" class="form-control" placeholder="Улица" ng-model="streetFilter" ng-change="onFilterChange()" /></th>
-                        <th><input type="text" style="width: 80px" class="form-control" placeholder="Дом №" ng-model="houseNumberFilterData.houseNumberFilter" ng-change="houseNumberFilterData.onHouseNumberFilterChange()"
-       bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")"
-       data-placement="bottom" title="Введите диапозон номеров" /></th>
-                        <th><input type="text" style="width: 90px" class="form-control" placeholder="Индекс" ng-model="indexFilter" ng-change="onFilterChange()" /></th>
-                        <th><input type="text" style="width: 180px" class="form-control" placeholder="Дата" ng-model="creationDateFilterData|dateRangeFilter"
-       bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
-       data-placement="bottom" title="Укажите период" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="{{translation.CAPTION_COUNTRY}}" ng-model="countryFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="{{translation.CAPTION_CITY}}" ng-model="cityFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 130px" class="form-control" placeholder="{{translation.CAPTION_STREET}}" ng-model="streetFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 80px" class="form-control" placeholder="{{translation.CAPTION_HN}}" ng-model="houseNumberFilterData.houseNumberFilter" ng-change="houseNumberFilterData.onHouseNumberFilterChange()"
+                                bs-popover data-template-url="@Url.Content("~/Templates/Popover_HouseNumber.tpl.html")"
+                                data-placement="bottom" title="{{translation.INPUT_RANGE}}" /></th>
+                        <th><input type="text" style="width: 90px" class="form-control" placeholder="{{translation.CAPTION_INDEX}}" ng-model="indexFilter" ng-change="onFilterChange()" /></th>
+                        <th><input type="text" style="width: 180px" class="form-control" placeholder="{{translation.CAPTION_DATE}}" ng-model="creationDateFilterData|dateRangeFilter"
+                               bs-popover data-template-url="@Url.Content("~/Templates/Popover_DateRangePicker.tpl.html")" data-auto-close="1"
+                               data-placement="bottom" title="{{translation.RANGE}}" /></th>
                     </tr>
                 </thead>
-                
                 <tbody>
                     <tr ng-repeat="address in pageData">
                         <th scope="row" ng-bind="(paginationData.currentPage - 1) * paginationData.itemsPerPage + $index + 1"></th>
@@ -57,11 +66,18 @@
             </table>
             <div class="panel-body">
                 <div class="row">
+                    <section>
+                        <select ng-change="paginationData.onPageChange()" ng-model="paginationData.itemsPerPage">
+                            <option selected value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </section>
                     <div class="col-lg-offset-3 col-lg-6 center">
-                        <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                        <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true" previous-text="<" next-text=">"></uib-pagination>
                     </div>
-                    <label class="control-label col-lg-3 label-info">Отобрано: <span ng-bind="filteredData.length"></span> из <span ng-bind="mailAddressesList.length"></span> </label>
-                    
+                    <label class="control-label col-lg-3 label-info"><span ng-bind="translation.PASS"></span>:<span ng-bind="filteredData.length"></span> <span ng-bind="translation.FROM"></span> <span ng-bind="mailAddressesList.length"></span> </label>
                 </div>
             </div>
         </div>

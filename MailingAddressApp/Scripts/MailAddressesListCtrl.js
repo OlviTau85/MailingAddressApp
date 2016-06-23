@@ -1,10 +1,16 @@
-﻿angular.module("MailingAddressApp").controller('MailAddressesListCtrl', ['$scope', 'MailAddressesListModel', 'orderByFilter', 'mailAddressListFilterFilter', 'filterFilter', MailAddressesListCtrl])
+﻿/* Module MailingAddressApp 
+ * Author: Udod O.V.
+ **/
+
+angular.module("MailingAddressApp").controller('MailAddressesListCtrl',
+['$scope', 'MailAddressesListModel', 'orderByFilter', 'mailAddressListFilterFilter', 'filterFilter', 'translationService', MailAddressesListCtrl])
 .factory('MailAddressesListModel', MailAddressesListModel)
 .filter('mailAddressListFilter', mailAddressListFilter)
-.filter('dateRangeFilter', ['dateFilter', dateRangeFilter]);
+.filter('dateRangeFilter', ['dateFilter', dateRangeFilter])
+.service('translationService', translationService);
 
 /* Main controller */
-function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddressListFilter, filter) {
+function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddressListFilter, filter, translationService) {
     var currentPage = 0;    // page of data downloading from server
     var maxPages = 1;       // count of that pages
 
@@ -15,11 +21,19 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
     // get count of data pages from server
     MailAddressesListModel.getMailAddressesCount().then(function (data) {  // if success
         maxPages = data.data;
-        console.log(maxPages);
         $scope.$broadcast('loadNextPage');                                 // begin download by pages
     }, function (error) {
         alert("Error! Can't get pages count! " + error.status);            // else alert!
     });
+
+    /* Localization */
+    $scope.translate = function () {
+        $scope.selectedLanguage = $scope.radioModel;
+        translationService.getTranslation($scope, $scope.selectedLanguage);
+    };
+    $scope.radioModel = 'ru';
+    $scope.translate();
+
 
     /* Set bounderies of date and numeric range components by min and max values of all records */
     function SetBounders() {
@@ -92,6 +106,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
 
     };
 
+    /* Date Filter properties */
     $scope.creationDateFilterData = {
         dateFrom: undefined,
         dateUntil: undefined,
@@ -105,6 +120,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
         }
     };
 
+    /* Numeric range Filter properties */
     $scope.houseNumberFilterData = {
         houseNumberFilter: undefined,
         onHouseNumberFilterChange: function () {
@@ -123,6 +139,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
         }
     }; 
 
+    /* Range component properties */
     $scope.rangeData = {
         valueFrom: 1,
         valueUntil: 999,
@@ -138,6 +155,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
         }
     };
 
+    /* Pagination properties */
     $scope.paginationData = {
         maxSize: 5,
         itemsPerPage: 10,
@@ -148,6 +166,7 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
         }
     };
 
+    /* Sorting properties */
     $scope.sortField = 'CreationDate';
     $scope.reverse = true;
 
@@ -185,4 +204,48 @@ function dateRangeFilter(dateFilter) {
         }
         return dateFilter(input.dateFrom, 'dd.MM.yyyy') + "-" + dateFilter(input.dateUntil, 'dd.MM.yyyy');
     }
+}
+
+/* Localization Service */
+function translationService() {
+    this.getTranslation = function ($scope, language) {
+        var data = null;
+        switch (language) {
+            case 'en':
+                data = {
+                    "CAPTION_COUNTRY": "Country",
+                    "CAPTION_CITY": "City",
+                    "CAPTION_STREET": "Street",
+                    "CAPTION_HN": "House #",
+                    "CAPTION_INDEX": "Index",
+                    "CAPTION_DATE": "Date",
+                    "TITLE": "Mail addresses table",
+                    "INPUT_RANGE": "Input number range",
+                    "RANGE": "Input date range",
+                    "PASS": "Records",
+                    "FROM": "of total",
+                    "PREV": "Previous",
+                    "NEXT": "Next"
+                };
+                break;
+            case 'ru':
+                data = {
+                    "CAPTION_COUNTRY": "Страна",
+                    "CAPTION_CITY": "Город",
+                    "CAPTION_STREET": "Улица",
+                    "CAPTION_HN": "Дом №",
+                    "CAPTION_INDEX": "Индекс",
+                    "CAPTION_DATE": "Дата",
+                    "TITLE": "Таблица почтовых адресов",
+                    "INPUT_RANGE": "Введите диапозон номеров",
+                    "RANGE": "Укажите период",
+                    "PASS": "ОБработанно",
+                    "FROM": "из",
+                    "PREV": "Предыдущая",
+                    "NEXT": "Следующая"
+                };
+                break;
+        }
+        $scope.translation = data;
+    };
 }
