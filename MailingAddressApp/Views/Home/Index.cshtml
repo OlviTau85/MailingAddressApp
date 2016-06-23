@@ -57,10 +57,10 @@
             </table>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-offset-4 col-lg-6 center">
+                    <div class="col-lg-offset-3 col-lg-6 center">
                         <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemsPerPage" ng-model="paginationData.currentPage" ng-change="paginationData.onPageChange()" max-size="paginationData.maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
                     </div>
-                    <label class="control-label col-lg-2 label-info">Отобрано: <span ng-bind="filteredData.length"></span> из <span ng-bind="mailAddressesList.length"></span> </label>
+                    <label class="control-label col-lg-3 label-info">Отобрано: <span ng-bind="filteredData.length"></span> из <span ng-bind="mailAddressesList.length"></span> </label>
                     
                 </div>
             </div>

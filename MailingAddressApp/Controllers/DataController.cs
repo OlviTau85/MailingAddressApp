@@ -9,11 +9,11 @@ namespace MailingAddressApp.Controllers
 {
     public class DataController : Controller
     {
-        const int itemsPerPage = 3000;
+        const int itemsPerPage = 10000;
         //
         // GET: /Data/
 
-        public JsonResult GetMailAddressList(int id)
+        public ActionResult GetMailAddressList(int id)
         {
             try
             {
@@ -26,14 +26,33 @@ namespace MailingAddressApp.Controllers
             }
             catch (System.Data.EntityException) 
             {
-                return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+                return new HttpStatusCodeResult(404);
             }
             catch (ArgumentNullException)
             {
-                return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.DenyGet };
-            }
-            
+                return new HttpStatusCodeResult(404);
+            }   
         }
 
+        public ActionResult GetMailAddressesCount()
+        {
+            try
+            {
+                MailAddressEntities dc = new MailAddressEntities();
+                return new JsonResult { Data = (int)(1 + (dc.MailAddresses.Count() / itemsPerPage)), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (System.Data.EntityException)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+            catch (ArgumentNullException)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+            catch (OverflowException)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+        }
     }
 }
