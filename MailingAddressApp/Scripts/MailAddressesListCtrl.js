@@ -149,6 +149,9 @@ function MailAddressesListCtrl($scope, MailAddressesListModel, orderBy, mailAddr
             $scope.houseNumberFilterData.houseNumberFilter = this.valueFrom + " - " + this.valueUntil;
             $scope.onFilterChange();
         },
+        isFiltred: function(){
+            return !(this.valueFrom === this.min && this.valueUntil === this.max);
+        },
         reset: function () {
             $scope.rangeData.valueFrom = $scope.rangeData.min;
             $scope.rangeData.valueUntil = $scope.rangeData.max;
@@ -239,7 +242,7 @@ function translationService() {
                     "TITLE": "Таблица почтовых адресов",
                     "INPUT_RANGE": "Введите диапозон номеров",
                     "RANGE": "Укажите период",
-                    "PASS": "ОБработанно",
+                    "PASS": "Обработано",
                     "FROM": "из",
                     "PREV": "Предыдущая",
                     "NEXT": "Следующая"

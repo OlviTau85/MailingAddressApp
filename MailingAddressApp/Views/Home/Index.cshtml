@@ -58,7 +58,7 @@
                         <td ng-bind="address.Country" ng-class="{'text-info':isSortUp('Country')||isSortDown('Country')||countryFilter}"></td>
                         <td ng-bind="address.City" ng-class="{'text-info':isSortUp('City')||isSortDown('City')||cityFilter}"></td>
                         <td ng-bind="address.Street" ng-class="{'text-info':isSortUp('Street')||isSortDown('Street')||streetFilter}"></td>
-                        <td ng-bind="address.HouseNumber" ng-class="{'text-info':isSortUp('HouseNumber')||isSortDown('HouseNumber')||houseNumberFilterData.houseNumberFilter}"></td>
+                        <td ng-bind="address.HouseNumber" ng-class="{'text-info':isSortUp('HouseNumber')||isSortDown('HouseNumber')||rangeData.isFiltred()}"></td>
                         <td ng-bind="address.Index" ng-class="{'text-info':isSortUp('Index')||isSortDown('Index')||indexFilter}"></td>
                         <td ng-bind="address.CreationDate.slice(6, -2) | date:'dd.MM.yyyy HH:mm'" ng-class="{'text-info':isSortUp('CreationDate')||isSortDown('CreationDate')||creationDateFilterData}"></td>
                     </tr>
